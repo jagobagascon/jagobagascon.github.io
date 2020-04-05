@@ -299,9 +299,13 @@ body {
   font-weight: bold;
 }
 #header {
-  height: 75vh;
+  height: 100vh;
   position: relative;
   border-bottom: 1px solid #ddd;
+  -webkit-transition: height 300ms;
+  -moz-transition: height 300ms;
+  -ms-transition: height 300ms;
+  transition: height 300ms;
 }
 #header:before,
 #header:after {
@@ -327,7 +331,12 @@ body {
 }
 @media (max-width: 790px) {
   #header {
-    height: 60vh;
+    height: 30vh;
+  }
+}
+@media (max-width: 1440px) and (min-width: 790px) {
+  #header {
+    height: 75vh;
   }
 }
 #header-outer {
@@ -445,6 +454,18 @@ body {
 }
 #nav-search-btn:before {
   content: "\f002";
+}
+#nav-github-link:before {
+  content: "\f09b";
+}
+#nav-gitlab-link:before {
+  content: "\f296";
+}
+#nav-linkedin-link:before {
+  content: "\f0e1";
+}
+#nav-twitter-link:before {
+  content: "\f099";
 }
 #search-form-wrap {
   position: absolute;
