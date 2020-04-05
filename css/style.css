@@ -325,6 +325,11 @@ body {
   background: -ms-linear-gradient(transparent, rgba(0,0,0,0.2));
   background: linear-gradient(transparent, rgba(0,0,0,0.2));
 }
+@media (max-width: 790px) {
+  #header {
+    height: 60vh;
+  }
+}
 #header-outer {
   height: 100%;
   position: relative;
@@ -364,10 +369,11 @@ body {
   font-size: 40px;
   line-height: 40px;
   letter-spacing: 2px;
+  text-shadow: 0px 0px 15px #666;
 }
-@media (max-width: 790) {
+@media (max-width: 790px) {
   #logo {
-    font-size: 36px;
+    font-size: 32px;
   }
 }
 #subtitle {
