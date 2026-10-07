@@ -1,85 +1,52 @@
 <!DOCTYPE html>
-<html class="has-navbar-fixed-top" lang="EN">
+<html lang="EN">
 
 <head>
 	<meta name="generator" content="Hugo 0.167.0">
-    <meta name="theme-color" content="#fde1e2">
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta name="theme-color" content="#f5f5f0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
 
 
 
 <link rel="stylesheet" href="https://jagobagascon.github.io/style.css" />
 
-
     
 </head>
 
-<body>
-    <nav class="navbar is-fixed-top is-primary" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <span class="navbar-item">
-                <span class="has-text-weight-light">Jagoba</span>
-                &nbsp;
-                <span class="has-text-weight-semibold is-hidden-mobile">Gascón Sánchez</span>
-            </span>
-
-            
-<span class="navbar-item is-hidden-desktop has-text-primary-dark is-italic has-text-weight-light">Find me in</span>
-<a class="navbar-item is-hidden-desktop" href="https://www.linkedin.com/in/jagobagascon/" target="_blank">
-    <span class="icon" style="color: var(--color-linkedin);">
-        <i class="mdi mdi-24px mdi-linkedin"></i>
-    </span>
-</a><a class="navbar-item is-hidden-desktop" href="https://github.com/jagobagascon" target="_blank">
-    <span class="icon" style="color: var(--color-github);">
-        <i class="mdi mdi-24px mdi-github"></i>
-    </span>
-</a><a class="navbar-item is-hidden-desktop" href="https://twitter.com/jago_gs" target="_blank">
-    <span class="icon" style="color: var(--color-twitter);">
-        <i class="mdi mdi-24px mdi-twitter"></i>
-    </span>
-</a>
-
-            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-mac">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+<body id="top">
+    <nav class="site-navbar" role="navigation" aria-label="Main navigation">
+    <div class="site-container">
+        <div class="site-navbar-brand">
+            <a class="nav-brand-link" href="#top" aria-label="Back to top">
+                <span class="brand-mark" aria-hidden="true">JG</span>
+                <span class="brand-name">Jagoba Gascón Sánchez</span>
             </a>
+
+            <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navbar-mac" data-target="navbar-mac">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </button>
         </div>
 
-        <div id="navbar-mac" class="navbar-menu">
-            <div class="navbar-start">
+        <div id="navbar-mac" class="site-navbar-menu">
+            <div class="site-navbar-links">
                 
-                <a class="navbar-item" href="#section-about-me">About Me</a>
-                
-                
-                <a class="navbar-item" href="#section-experience">Experience</a>
+                <a class="site-nav-link" href="#section-about-me">Profile</a>
                 
                 
-                <a class="navbar-item" href="#section-education">Education</a>
+                <a class="site-nav-link" href="#section-experience">Experience</a>
                 
                 
-                <a class="navbar-item" href="#section-links-of-interest">Links of interest</a>
+                <a class="site-nav-link" href="#section-education">Education</a>
                 
-            </div>
-
-            <div class="navbar-end">
                 
-<span class="navbar-item is-hidden-tablet-only is-hidden-mobile has-text-primary-dark is-italic has-text-weight-light">Find me in</span>
-<a class="navbar-item is-hidden-tablet-only is-hidden-mobile" href="https://www.linkedin.com/in/jagobagascon/" target="_blank">
-    <span class="icon" style="color: var(--color-linkedin);">
-        <i class="mdi mdi-24px mdi-linkedin"></i>
-    </span>
-</a><a class="navbar-item is-hidden-tablet-only is-hidden-mobile" href="https://github.com/jagobagascon" target="_blank">
-    <span class="icon" style="color: var(--color-github);">
-        <i class="mdi mdi-24px mdi-github"></i>
-    </span>
-</a><a class="navbar-item is-hidden-tablet-only is-hidden-mobile" href="https://twitter.com/jago_gs" target="_blank">
-    <span class="icon" style="color: var(--color-twitter);">
-        <i class="mdi mdi-24px mdi-twitter"></i>
-    </span>
-</a>
-
+                <a class="site-nav-link" href="#section-links-of-interest">Elsewhere</a>
+                
             </div>
         </div>
     </div>
@@ -87,351 +54,224 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        
-        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        const burger = document.querySelector('.nav-toggle');
+        const menu = document.getElementById(burger.dataset.target);
 
-        
-        $navbarBurgers.forEach(el => {
-            el.addEventListener('click', () => {
-
-                
-                const target = el.dataset.target;
-                const $target = document.getElementById(target);
-
-                
-                el.classList.toggle('is-active');
-                $target.classList.toggle('is-active');
-
-            });
+        burger.addEventListener('click', () => {
+            const isExpanded = burger.getAttribute('aria-expanded') === 'true';
+            burger.classList.toggle('is-active');
+            menu.classList.toggle('is-active');
+            burger.setAttribute('aria-expanded', String(!isExpanded));
         });
 
+        menu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                burger.classList.remove('is-active');
+                menu.classList.remove('is-active');
+                burger.setAttribute('aria-expanded', 'false');
+            });
+        });
     });
 </script>
 
 
-    <div class="section">
-        <div class="container">
-            <div class="tile is-ancestor">
-                <div class="tile is-parent is-3">
-                    <div class="tile is-child">
-                        <h1 class="title is-hidden-mobile">
-    &nbsp;
-    
-</h1>
-<div class="card">
-    <div class="card-image">
-        <figure class="image is-1by1" style='
-            background-image: url("https://media-asgard.s3.eu-west-1.amazonaws.com/22/05/10/025814fb-329f-4d93-b185-6c4018eb10f3_img_0672.jpg");
-            background-size: cover;
-            background-position: center center;'>
-        </figure>
+    <main class="page-shell">
+        <div class="site-container cv-layout">
+            <aside class="profile-column" aria-label="Profile">
+                <div class="profile-card">
+    <div class="profile-photo-wrap">
+        <img class="profile-photo" src="https://media-asgard.s3.eu-west-1.amazonaws.com/22/05/10/025814fb-329f-4d93-b185-6c4018eb10f3_img_0672.jpg" alt="IMG_0672.CR2.jpg" loading="eager">
     </div>
-    <div class="card-content">
-        <div class="media">
-            <div class="media-content">
-                <div class="title is-4">
-                    <span class="has-text-weight-light">Jagoba</span>
-                    <span class="has-text-weight-semibold">Gascón Sánchez</span>
-                </div>
-                <p class="subtitle is-5">
-                    Software Engineer
-                </p>
-            </div>
-        </div>
-        <div class="media">
-            <div class="media-content">
-                <div class="title is-6">
-                    Technologies and tools
-                </div>
-                <div class="tags">
-                    
-                    <div class="tag is-rounded is-primary">API</div>
-                    
-                    <div class="tag is-rounded is-primary">Angular2&#43;</div>
-                    
-                    <div class="tag is-rounded is-primary">Docker</div>
-                    
-                    <div class="tag is-rounded is-primary">Go</div>
-                    
-                    <div class="tag is-rounded is-primary">TypeScript</div>
-                    
-                    <div class="tag is-rounded is-primary">gRPC</div>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="media">
-            <div class="media-content">
-                <div class="title is-6">
-                    Languages
-                </div>
-                <div class="tags">
-                    
-                    <div class="tag is-rounded is-primary">EN</div>
-                    
-                    <div class="tag is-rounded is-primary">ES</div>
-                    
-                    <div class="tag is-rounded is-primary">EU</div>
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-                    </div>
-                </div>
-                <div class="tile is-parent is-9 is-vertical">
-                    <div class="tile is-child ">
-                        
-                        <a class="fixed-top-anchor" id="section-about-me"></a>
-                        <h1 class="title">A bit about myself</h1>
-<div class="card">
-    <div class="card-content">
-        I'm a versatile developer with a strong background in web technologies and a passion for solving complex technical problems across the stack.<br /><br />I enjoy working on many kinds of projects—whether it’s building fast, interactive maps in the browser, improving CI/CD pipelines, or creating custom communication protocols for IoT devices. I adapt quickly and focus on delivering solid, reliable solutions.<br /><br />I’m not afraid of deep technical challenges. I’ve spent days digging through packet captures in Wireshark to find hard-to-catch bugs, and I’ve even written custom plugins to help analyze proprietary protocols more easily.<br /><br />Frontend, backend, or DevOps—wherever there’s a problem to solve, I’m motivated to understand it, fix it, and make the system better.
-    </div>
-</div>
-
-                        
-                    </div>
-                    <div class="tile is-child ">
-                        
-                        <a class="fixed-top-anchor" id="section-experience"></a>
-                        <h1 class="title">Experience</h1>
-<div class="box">
-    
-    <div class="media">
-        <div class="media-left">
-            <a href="https://arima.eu/en/" target="_blank">
-                <figure class="image is-3by2" style='
-                        background-image: url("https://media-asgard.s3.eu-west-1.amazonaws.com/22/05/09/3fb833f9-016d-4a5d-8481-ca678ebd2b95_e6dfbbea-fe96-4840-b.png");
-                        background-size: contain;
-                        background-repeat: no-repeat;
-                        background-position: center top;
-                        width: 10rem;'>
-                </figure>
-            </a>
-        </div>
-        <div class="media-content">
-            <div class="content">
-                <div class="title is-6">
-                    Software Engineer
-                </div>
-                <div class="subtitle is-6">
-                    <a href="https://arima.eu/en/" target="_blank">Arima Software S.L.</a>
-                    -
-                    
-                    <small>
-                        2016-04-01 -
-                        
-                        Present
-                        
-                    </small>
-                    
-                </div>
-            </div>
-            <div class="content">
-                
-                My role as a software engineer involves closely collaborating with clients to develop solutions that both meet their current needs and reveal new opportunities for improvement.<br /><br />I've worked with lots of several technologies:<br /><br />- A modular Spring Boot (Java) application, designing an architecture that enabled our client to customize the app for each of their end customers.<br />- I've built code generation plugins and SDKs for auto-generated gRPC APIs.<br />- I've also developed a cross-platform Bluetooth communication stack for our client's IoT devices. I rewrote the existing propietary protocol in C for reuse across platforms and developed Java/Kotlin (Android) and Swift (iOS/macOS) SDKs on top of it, simplifying maintenance and third-party integration.<br />- I've worked with authentication protocols and contributed implementing the JWT Assertion Oauth grant in ory/hydra.
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="media">
-        <div class="media-left">
-            <a href="https://indaba.es/index-en.html" target="_blank">
-                <figure class="image is-3by2" style='
-                        background-image: url("https://media-asgard.s3.eu-west-1.amazonaws.com/22/05/09/b9f9a9fe-ca4d-47f7-83b8-a2e77a97f136_32eef09f-b1fb-45ff-a.png");
-                        background-size: contain;
-                        background-repeat: no-repeat;
-                        background-position: center top;
-                        width: 10rem;'>
-                </figure>
-            </a>
-        </div>
-        <div class="media-content">
-            <div class="content">
-                <div class="title is-6">
-                    Software Engineer
-                </div>
-                <div class="subtitle is-6">
-                    <a href="https://indaba.es/index-en.html" target="_blank">Indaba Consultores S.L.</a>
-                    -
-                    
-                    <small>
-                        2014-12-01 -
-                        
-                        2016-04-01
-                        
-                    </small>
-                    
-                </div>
-            </div>
-            <div class="content">
-                
-                I mostly worked in the backend of an application used by Lanbide (Basque Employment Service) to manage the RGI (a kind of a universal basic income for unemployed people). I automated the process used to approve RGI requests, and improved it by connecting with government third party apis to automatically validate data (e.g. validating user information against police database records).
-                
-            </div>
-        </div>
-    </div>
-    
-    <div class="media">
-        <div class="media-left">
-            <a href="https://akting.eu/en" target="_blank">
-                <figure class="image is-3by2" style='
-                        background-image: url("https://media-asgard.s3.eu-west-1.amazonaws.com/22/05/09/449af380-8851-4807-b7c8-6e88268d86ba_bb2069c0-bc85-41c8-b.svg");
-                        background-size: contain;
-                        background-repeat: no-repeat;
-                        background-position: center top;
-                        width: 10rem;'>
-                </figure>
-            </a>
-        </div>
-        <div class="media-content">
-            <div class="content">
-                <div class="title is-6">
-                    Software Engineer
-                </div>
-                <div class="subtitle is-6">
-                    <a href="https://akting.eu/en" target="_blank">Akting Engineering S.L.</a>
-                    -
-                    
-                    <small>
-                        2013-10-01 -
-                        
-                        2014-11-01
-                        
-                    </small>
-                    
-                </div>
-            </div>
-            <div class="content">
-                
-                Took part in several small projects using CakePhp, Android and iOS.
-                
-            </div>
-        </div>
-    </div>
-    
-</div>
-
-                        
-                    </div>
-                    <div class="tile is-child ">
-                        
-                        <a class="fixed-top-anchor" id="section-education"></a>
-                        <h1 class="title">Education</h1>
-<div class="box">
-    
-    <div class="media">
-        <div class="media-left">
-            <a href="https://www.ehu.eus/es/web/informatika-fakultatea" target="_blank">
-                <figure class="image is-3by2" style='
-                        background-image: url("https://media-asgard.s3.eu-west-1.amazonaws.com/22/05/09/d243c118-bc63-4f09-b521-4073750f7895_6186b849-68c7-497c-9.png");
-                        background-size: contain;
-                        background-repeat: no-repeat;
-                        background-position: left top;
-                        width: 10rem;'>
-                </figure>
-            </a>
-        </div>
-        <div class="media-content">
-            <div class="content">
-                <div class="title is-6">
-                    <strong>Advanced Computer Systems Master, Distributed and Web Systems</strong>
-                </div>
-                <div class="subtitle is-6">
-                    <a href="https://www.ehu.eus/es/web/informatika-fakultatea" target="_blank">Euskal Herriko Unibertsitatea</a>
-                    -
-                    <small>
-                        2013-10-01 -
-                        
-                        2015-05-01
-                        
-                    </small>
-                </div>
-            </div>
-            <div class="content">
-            </div>
-        </div>
-    </div>
-    
-    <div class="media">
-        <div class="media-left">
-            <a href="https://www.ehu.eus/es/web/informatika-fakultatea" target="_blank">
-                <figure class="image is-3by2" style='
-                        background-image: url("https://media-asgard.s3.eu-west-1.amazonaws.com/22/05/09/4b226f35-8d73-4795-aa83-353b1d65d940_97f191a7-5661-426f-b.png");
-                        background-size: contain;
-                        background-repeat: no-repeat;
-                        background-position: left top;
-                        width: 10rem;'>
-                </figure>
-            </a>
-        </div>
-        <div class="media-content">
-            <div class="content">
-                <div class="title is-6">
-                    <strong>Information Technologies Degree, Software Engineering Specialisation</strong>
-                </div>
-                <div class="subtitle is-6">
-                    <a href="https://www.ehu.eus/es/web/informatika-fakultatea" target="_blank">Euskal Herriko Unibertsitatea</a>
-                    -
-                    <small>
-                        2009-10-01 -
-                        
-                        2013-06-01
-                        
-                    </small>
-                </div>
-            </div>
-            <div class="content">
-            </div>
-        </div>
-    </div>
-    
-</div>
-
-                        
-                    </div>
-                    <div class="tile is-child ">
-                        
-                        <a class="fixed-top-anchor" id="section-links-of-interest"></a>
-                        <h1 class="title">Links of interest</h1>
-<div class="box">
-    
-    <div class="media">
-        <div class="media-content">
-            <div class="content">
-                <div class="title is-6">
-                    <a href="https://github.com/search?o=desc&amp;q=author%3Ajagobagascon&amp;s=updated&amp;type=Issues" target="_blank" class="has-text-link" aria-label="website">
-                        Checkout my open source GitHub contributions
-                        <span class="icon">
-                            <i class="mdi mdi-web" aria-hidden="true"></i>
-                        </span>
-                    </a>
-                </div>
-            </div>
-            <div class="content">
-                A list of my publicly available open source contributions.
-            </div>
-        </div>
-    </div>
-    
-</div>
-
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <footer class="footer is-transparent">
-    <div class="content has-text-centered">
+    <div class="profile-intro">
+        <p class="eyebrow">Software · Systems · Problem solving</p>
+        <h1>Jagoba<br>Gascón Sánchez</h1>
+        <p class="profile-title">Software Engineer</p>
+        
+        <p class="availability"><span class="profile-status" aria-hidden="true"></span>Open to offers</p>
+        
+        
+        <p class="profile-location"><span class="ui-icon" aria-hidden="true"><i class="mdi mdi-map-marker-outline"></i></span>País Vasco, España</p>
         
     </div>
-</footer>
+    <div class="profile-socials" aria-label="Social profiles">
+        <a class="social-link" href="https://www.linkedin.com/in/jagobagascon/" target="_blank" rel="noopener noreferrer" aria-label="Linkedin (opens in a new tab)">
+            <span class="ui-icon"><i class="mdi mdi-linkedin" aria-hidden="true"></i></span>
+            <span>Linkedin</span>
+        </a><a class="social-link" href="https://github.com/jagobagascon" target="_blank" rel="noopener noreferrer" aria-label="Github (opens in a new tab)">
+            <span class="ui-icon"><i class="mdi mdi-github" aria-hidden="true"></i></span>
+            <span>Github</span>
+        </a><a class="social-link" href="https://twitter.com/jago_gs" target="_blank" rel="noopener noreferrer" aria-label="Twitter (opens in a new tab)">
+            <span class="ui-icon"><i class="mdi mdi-twitter" aria-hidden="true"></i></span>
+            <span>Twitter</span>
+        </a>
+    </div>
+    <div class="profile-group">
+        <h2 class="profile-label">Core technologies</h2>
+        <div class="skill-list">
+            
+            <span class="skill-chip">API</span>
+            
+            <span class="skill-chip">Angular2&#43;</span>
+            
+            <span class="skill-chip">Docker</span>
+            
+            <span class="skill-chip">Go</span>
+            
+            <span class="skill-chip">TypeScript</span>
+            
+            <span class="skill-chip">gRPC</span>
+            
+        </div>
+    </div>
+    <div class="profile-group profile-languages">
+        <h2 class="profile-label">Languages</h2>
+        <ul>
+            
+            <li><span>Inglés</span><small>Full professional proficiency</small></li>
+            
+            <li><span>Español</span><small>Native or bilingual proficiency</small></li>
+            
+            <li><span>Euskera</span><small>Native or bilingual proficiency</small></li>
+            
+        </ul>
+    </div>
+</div>
 
+            </aside>
+            <div class="cv-content">
+                
+                <section class="cv-section intro-section" aria-labelledby="section-about-me">
+                    <p class="eyebrow">Profile</p>
+<h2 class="section-title" id="section-about-me">A bit about myself</h2>
+<div class="intro-copy rich-text">
+    <p>I&rsquo;m a versatile developer with a strong background in web technologies and a passion for solving complex technical problems across the stack.</p>
+<p>I enjoy working on many kinds of projects—whether it’s building fast, interactive maps in the browser, improving CI/CD pipelines, or creating custom communication protocols for IoT devices. I adapt quickly and focus on delivering solid, reliable solutions.</p>
+<p>I’m not afraid of deep technical challenges. I’ve spent days digging through packet captures in Wireshark to find hard-to-catch bugs, and I’ve even written custom plugins to help analyze proprietary protocols more easily.</p>
+<p>Frontend, backend, or DevOps—wherever there’s a problem to solve, I’m motivated to understand it, fix it, and make the system better.</p>
+
+</div>
+
+                </section>
+                
+                
+                <section class="cv-section" aria-labelledby="section-experience">
+                    <p class="eyebrow">Career</p>
+<h2 class="section-title" id="section-experience">Experience</h2>
+<div class="experience-list">
+    
+    
+    <article class="experience-item">
+        <div class="experience-mark" aria-hidden="true"></div>
+        <div class="experience-heading">
+            <div>
+                <h3>Software Engineer</h3>
+                <a class="organization-link" href="https://arima.eu/en/" target="_blank" rel="noopener noreferrer">Arima Software S.L. <span class="ui-icon" aria-hidden="true"><i class="mdi mdi-arrow-top-right"></i></span></a>
+            </div>
+            <p class="date-range"><time datetime="2016-04-01">Apr 2016</time><span aria-hidden="true">—</span><span>Present</span></p>
+        </div>
+        <div class="experience-description rich-text">
+            <p>My role as a software engineer involves closely collaborating with clients to develop solutions that both meet their current needs and reveal new opportunities for improvement.</p>
+<p>I&rsquo;ve worked with lots of several technologies:</p>
+<ul>
+<li>A modular Spring Boot (Java) application, designing an architecture that enabled our client to customize the app for each of their end customers.</li>
+<li>I&rsquo;ve built code generation plugins and SDKs for auto-generated gRPC APIs.</li>
+<li>I&rsquo;ve also developed a cross-platform Bluetooth communication stack for our client&rsquo;s IoT devices. I rewrote the existing propietary protocol in C for reuse across platforms and developed Java/Kotlin (Android) and Swift (iOS/macOS) SDKs on top of it, simplifying maintenance and third-party integration.</li>
+<li>I&rsquo;ve worked with authentication protocols and contributed implementing the JWT Assertion Oauth grant in ory/hydra.</li>
+</ul>
+
+        </div>
+        <div class="experience-tags">
+            <span>C</span><span>Go</span><span>Java</span><span>Spring Boot</span>
+        </div>
+    </article>
+    
+    
+    <article class="experience-item">
+        <div class="experience-mark" aria-hidden="true"></div>
+        <div class="experience-heading">
+            <div>
+                <h3>Software Engineer</h3>
+                <a class="organization-link" href="https://indaba.es/index-en.html" target="_blank" rel="noopener noreferrer">Indaba Consultores S.L. <span class="ui-icon" aria-hidden="true"><i class="mdi mdi-arrow-top-right"></i></span></a>
+            </div>
+            <p class="date-range"><time datetime="2014-12-01">Dec 2014</time><span aria-hidden="true">—</span><time datetime="2016-04-01">Apr 2016</time></p>
+        </div>
+        <div class="experience-description rich-text">
+            I mostly worked in the backend of an application used by Lanbide (Basque Employment Service) to manage the RGI (a kind of a universal basic income for unemployed people). I automated the process used to approve RGI requests, and improved it by connecting with government third party apis to automatically validate data (e.g. validating user information against police database records).
+        </div>
+        <div class="experience-tags">
+            <span>JBoss</span><span>JPA</span><span>Java</span>
+        </div>
+    </article>
+    
+    
+    <article class="experience-item">
+        <div class="experience-mark" aria-hidden="true"></div>
+        <div class="experience-heading">
+            <div>
+                <h3>Software Engineer</h3>
+                <a class="organization-link" href="https://akting.eu/en" target="_blank" rel="noopener noreferrer">Akting Engineering S.L. <span class="ui-icon" aria-hidden="true"><i class="mdi mdi-arrow-top-right"></i></span></a>
+            </div>
+            <p class="date-range"><time datetime="2013-10-01">Oct 2013</time><span aria-hidden="true">—</span><time datetime="2014-11-01">Nov 2014</time></p>
+        </div>
+        <div class="experience-description rich-text">
+            Took part in several small projects using CakePhp, Android and iOS.
+        </div>
+        <div class="experience-tags">
+            <span>Android</span><span>Apple iOS</span><span>CakePHP</span>
+        </div>
+    </article>
+    
+</div>
+
+                </section>
+                
+                
+                <section class="cv-section" aria-labelledby="section-education">
+                    <p class="eyebrow">Background</p>
+<h2 class="section-title" id="section-education">Education</h2>
+<div class="education-list">
+    
+    <article class="education-item">
+        <span class="education-icon" aria-hidden="true"><i class="mdi mdi-school-outline"></i></span>
+        <div>
+            <h3>Advanced Computer Systems Master, Distributed and Web Systems</h3>
+            <a class="organization-link" href="https://www.ehu.eus/es/web/informatika-fakultatea" target="_blank" rel="noopener noreferrer">Euskal Herriko Unibertsitatea <span class="ui-icon" aria-hidden="true"><i class="mdi mdi-arrow-top-right"></i></span></a>
+            <p class="date-range"><time datetime="2013-10-01">Oct 2013</time><span aria-hidden="true">—</span><time datetime="2015-05-01">May 2015</time></p>
+        </div>
+    </article>
+    
+    <article class="education-item">
+        <span class="education-icon" aria-hidden="true"><i class="mdi mdi-school-outline"></i></span>
+        <div>
+            <h3>Information Technologies Degree, Software Engineering Specialisation</h3>
+            <a class="organization-link" href="https://www.ehu.eus/es/web/informatika-fakultatea" target="_blank" rel="noopener noreferrer">Euskal Herriko Unibertsitatea <span class="ui-icon" aria-hidden="true"><i class="mdi mdi-arrow-top-right"></i></span></a>
+            <p class="date-range"><time datetime="2009-10-01">Oct 2009</time><span aria-hidden="true">—</span><time datetime="2013-06-01">Jun 2013</time></p>
+        </div>
+    </article>
+    
+</div>
+
+                </section>
+                
+                
+                <section class="cv-section" aria-labelledby="section-links-of-interest">
+                    <p class="eyebrow">Around the web</p>
+<h2 class="section-title" id="section-links-of-interest">Selected links</h2>
+<div class="interest-list">
+    
+    <a class="interest-link" href="https://github.com/search?o=desc&amp;q=author%3Ajagobagascon&amp;s=updated&amp;type=Issues" target="_blank" rel="noopener noreferrer">
+        <span class="interest-icon" aria-hidden="true"><i class="mdi mdi-open-in-new"></i></span>
+        <span><strong>Checkout my open source GitHub contributions</strong><small>A list of my publicly available open source contributions.</small></span>
+        <span class="ui-icon interest-arrow" aria-hidden="true"><i class="mdi mdi-arrow-top-right"></i></span>
+    </a>
+    
+</div>
+
+                </section>
+                
+            </div>
+        </div>
+    </main>
 </body>
 
 </html>
