@@ -84,6 +84,24 @@
                 burger.setAttribute('aria-expanded', 'false');
             });
         });
+
+        if (typeof Intl.DisplayNames === 'function') {
+            const languageNames = new Intl.DisplayNames(['en'], { type: 'language' });
+
+            document.querySelectorAll('[data-language-code]').forEach((element) => {
+                const languageCode = element.dataset.languageCode.toLowerCase();
+
+                try {
+                    const languageName = languageNames.of(languageCode);
+
+                    if (languageName && languageName.toLowerCase() !== languageCode) {
+                        element.textContent = languageName;
+                    }
+                } catch (error) {
+                    
+                }
+            });
+        }
     });
 </script>
 
@@ -140,11 +158,11 @@
         <h2 class="profile-label">Languages</h2>
         <ul>
             
-            <li><span>Inglés</span><small>Full professional proficiency</small></li>
+            <li><span class="language-name" data-language-code="EN">Inglés</span><small>Full professional proficiency</small></li>
             
-            <li><span>Español</span><small>Native or bilingual proficiency</small></li>
+            <li><span class="language-name" data-language-code="ES">Español</span><small>Native or bilingual proficiency</small></li>
             
-            <li><span>Euskera</span><small>Native or bilingual proficiency</small></li>
+            <li><span class="language-name" data-language-code="EU">Euskera</span><small>Native or bilingual proficiency</small></li>
             
         </ul>
     </div>
